@@ -9,7 +9,9 @@ export const baseRegistrationSchema = z.object({
   education: z.enum(["10th", "12th", "diploma", "graduation", "postgraduation", "other"], {
     required_error: "Please select your educational qualification"
   }),
-  certification: z.boolean().default(false),
+  certification: z.boolean().refine(val => val === true, {
+    message: "You must agree to the certification"
+  }),
   quizCompleted: z.boolean().default(false),
   registeredAt: z.date().default(() => new Date()),
   completedAt: z.date().optional(),

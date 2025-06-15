@@ -26,23 +26,29 @@ export default function PersonalDetailsPage() {
     watch,
     formState: { errors }
   } = useForm<InsertRegistration>({
-    resolver: zodResolver(insertRegistrationSchema)
+    resolver: zodResolver(insertRegistrationSchema),
+    defaultValues: {
+      certification: false
+    }
   });
 
   const certification = watch("certification");
 
   const registrationMutation = useMutation({
     mutationFn: async (data: InsertRegistration) => {
-      return apiRequest('POST', '/api/register', data);
+      const response = await apiRequest('POST', '/api/register', data);
+      return response.json();
     },
-    onSuccess: async (response) => {
-      const result = await response.json();
+    onSuccess: (result) => {
       setUserData(result);
       toast({
         title: "Registration Successful",
         description: "You can now proceed to the test.",
       });
-      setLocation('/quiz');
+      // Navigate to quiz page after successful registration
+      setTimeout(() => {
+        setLocation('/quiz');
+      }, 500);
     },
     onError: (error: Error) => {
       toast({
@@ -54,6 +60,8 @@ export default function PersonalDetailsPage() {
   });
 
   const onSubmit = (data: InsertRegistration) => {
+    console.log('Form submitted with data:', data);
+    console.log('Form errors:', errors);
     registrationMutation.mutate(data);
   };
 
