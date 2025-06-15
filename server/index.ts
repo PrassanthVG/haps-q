@@ -7,6 +7,12 @@ import path from "path";
 // Load environment variables from .env file
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
+// Debug environment variables
+console.log('Environment check:', {
+  MONGODB_URI: process.env.MONGODB_URI ? 'Set' : 'Not set',
+  NODE_ENV: process.env.NODE_ENV
+});
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

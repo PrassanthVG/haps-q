@@ -1,5 +1,14 @@
-import { MongoClient, Db, Collection } from 'mongodb';
+import { MongoClient, Db, Collection, ObjectId } from 'mongodb';
 import { Registration, QuizSubmission } from '@shared/schema';
+import dotenv from 'dotenv';
+
+// Ensure environment variables are loaded
+dotenv.config();
+
+// MongoDB-specific registration type with proper ObjectId
+export interface MongoRegistration extends Omit<Registration, '_id'> {
+  _id?: ObjectId;
+}
 
 export interface IStorage {
   createRegistration(registration: Omit<Registration, '_id' | 'quizCompleted' | 'registeredAt'>): Promise<Registration>;
@@ -10,7 +19,7 @@ export interface IStorage {
 export class MongoStorage implements IStorage {
   private client: MongoClient;
   private db: Db;
-  private registrations: Collection<Registration>;
+  private registrations: Collection<MongoRegistration>;
 
   constructor() {
     const uri = process.env.MONGODB_URI;
@@ -20,7 +29,7 @@ export class MongoStorage implements IStorage {
     
     this.client = new MongoClient(uri);
     this.db = this.client.db('leads');
-    this.registrations = this.db.collection<Registration>('registrations');
+    this.registrations = this.db.collection<MongoRegistration>('registrations');
   }
 
   async connect() {
@@ -34,14 +43,14 @@ export class MongoStorage implements IStorage {
   }
 
   async createRegistration(registrationData: Omit<Registration, '_id' | 'quizCompleted' | 'registeredAt'>): Promise<Registration> {
-    const registration: Registration = {
+    const mongoRegistration: MongoRegistration = {
       ...registrationData,
       quizCompleted: false,
       registeredAt: new Date()
     };
 
-    const result = await this.registrations.insertOne(registration);
-    return { ...registration, _id: result.insertedId };
+    const result = await this.registrations.insertOne(mongoRegistration);
+    return { ...mongoRegistration, _id: result.insertedId.toString() };
   }
 
   async updateQuizCompletion(email: string, submission: QuizSubmission): Promise<Registration | null> {
