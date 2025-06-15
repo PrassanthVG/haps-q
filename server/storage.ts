@@ -54,16 +54,22 @@ export class MongoStorage implements IStorage {
   }
 
   async updateQuizCompletion(email: string, submission: QuizSubmission): Promise<Registration | null> {
-    // Calculate score
+    // Calculate score for multiple choice questions (questions 1-29)
     const quizData = await import('../client/src/lib/quiz-data');
     let correct = 0;
+    let totalMCQ = 0;
+    
     submission.answers.forEach((answer, index) => {
-      if (answer !== null && answer === quizData.quizQuestions[index].correct) {
-        correct++;
+      // Skip the last question (open-ended)
+      if (index < 29) {
+        totalMCQ++;
+        if (answer !== null && answer !== undefined && typeof answer === 'number' && answer === quizData.quizQuestions[index].correct) {
+          correct++;
+        }
       }
     });
     
-    const percentage = Math.round((correct / submission.answers.length) * 100);
+    const percentage = Math.round((correct / totalMCQ) * 100);
     const quizmark = correct;
 
     const result = await this.registrations.findOneAndUpdate(
@@ -73,7 +79,8 @@ export class MongoStorage implements IStorage {
           quizCompleted: true,
           completedAt: new Date(),
           percentage,
-          quizmark
+          quizmark,
+          openEndedAnswer: submission.answers[29] // Store the open-ended answer
         }
       },
       { returnDocument: 'after' }

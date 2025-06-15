@@ -1,4 +1,4 @@
-// Quiz questions extracted from the content file
+// Quiz questions from test.txt file
 export interface QuizQuestion {
   section: string;
   question: string;
@@ -8,8 +8,8 @@ export interface QuizQuestion {
 }
 
 export const quizQuestions: QuizQuestion[] = [
-  // CPL & Aviation Basics (Questions 1-18)
-  { 
+  // CPL & Aviation Basics (Questions 1-19)
+  {
     section: "CPL & Aviation Basics",
     question: "What is the full form of CPL in aviation?",
     options: ["Commercial Pilot License", "Civil Pilot License", "Certified Private License", "Commercial Passenger Line"],
@@ -25,7 +25,7 @@ export const quizQuestions: QuizQuestion[] = [
     section: "CPL & Aviation Basics",
     question: "How many total flying hours are required to be eligible for CPL in India?",
     options: ["100 hours", "150 hours", "200 hours", "250 hours"],
-    correct: 3
+    correct: 2
   },
   {
     section: "CPL & Aviation Basics",
@@ -97,7 +97,7 @@ export const quizQuestions: QuizQuestion[] = [
     section: "CPL & Aviation Basics",
     question: "What is the basic fuel requirement for VFR day flight?",
     options: ["Enough for 15 mins", "Enough for 30 mins", "Enough for 45 mins", "No requirement"],
-    correct: 2
+    correct: 1
   },
   {
     section: "CPL & Aviation Basics",
@@ -123,7 +123,7 @@ export const quizQuestions: QuizQuestion[] = [
     options: ["Stop", "Clear to taxi", "Emergency", "Takeoff immediately"],
     correct: 0
   },
-  // Behavior & Situational Awareness (Questions 19-24)
+  // Behavior & Situational Awareness (Questions 20-25)
   {
     section: "Behavior & Situational Awareness",
     question: "When facing a goal that requires sustained effort over months, how do you keep yourself accountable?",
@@ -160,7 +160,7 @@ export const quizQuestions: QuizQuestion[] = [
     options: ["Complain about unfairness", "Freeze and wait for instruction", "Panic slightly, but try to recover", "Assess calmly, fall back on training and prioritize safety"],
     correct: 3
   },
-  // Motivation & Goal Alignment (Questions 25-30)
+  // Motivation & Goal Alignment (Questions 26-29)
   {
     section: "Motivation & Goal Alignment",
     question: "Why do you believe aviation is the right career path for you?",
@@ -185,11 +185,12 @@ export const quizQuestions: QuizQuestion[] = [
     options: ["Push through and adapt — I'm here for the long haul", "Consider switching paths if it gets too hard", "Reconsider the field entirely", "Take long breaks until motivation returns"],
     correct: 0
   },
+  // Question 30 - Open-ended
   {
     section: "Motivation & Goal Alignment",
     question: "What personal traits do you believe will help you thrive as a pilot?",
-    options: ["Focus on details and safety protocols", "Strong communication and decision-making skills", "Resilience and adaptability under pressure", "All of the above"],
-    correct: 3,
+    options: [], // Empty for open-ended
+    correct: -1, // No correct answer for open-ended
     isOpenEnded: true
   }
 ];

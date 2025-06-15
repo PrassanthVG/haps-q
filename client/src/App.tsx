@@ -14,8 +14,8 @@ import NotFound from "@/pages/not-found";
 export const AppContext = React.createContext<{
   userData: any;
   setUserData: (data: any) => void;
-  quizAnswers: (number | null)[];
-  setQuizAnswers: (answers: (number | null)[]) => void;
+  quizAnswers: (number | string | null)[];
+  setQuizAnswers: (answers: (number | string | null)[]) => void;
 }>({
   userData: null,
   setUserData: () => {},
@@ -25,7 +25,7 @@ export const AppContext = React.createContext<{
 
 function Router() {
   const [userData, setUserData] = useState(null);
-  const [quizAnswers, setQuizAnswers] = useState<(number | null)[]>(new Array(30).fill(null));
+  const [quizAnswers, setQuizAnswers] = useState<(number | string | null)[]>(new Array(30).fill(null));
 
   return (
     <AppContext.Provider value={{ userData, setUserData, quizAnswers, setQuizAnswers }}>
@@ -46,11 +46,11 @@ function Router() {
             {/* Contact Info (Hidden on mobile) */}
             <div className="hidden lg:flex items-center space-x-4 text-sm text-gray-600">
               <div className="flex items-center space-x-1">
-                <i className="fas fa-phone text-blue-500"></i>
+                <span className="text-blue-500">📞</span>
                 <span>+91 99452 44270</span>
               </div>
               <div className="flex items-center space-x-1">
-                <i className="fas fa-envelope text-blue-500"></i>
+                <span className="text-blue-500">📧</span>
                 <span>marketing@hapsaviation.com</span>
               </div>
             </div>

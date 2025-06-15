@@ -26,7 +26,7 @@ export const registrationSchema = baseRegistrationSchema.extend({
 
 export const quizSubmissionSchema = z.object({
   email: z.string().email(),
-  answers: z.array(z.number().nullable()).length(30),
+  answers: z.array(z.union([z.number(), z.string(), z.null()])).length(30), // Support string answers for open-ended
   timeSpent: z.number() // in seconds
 });
 
