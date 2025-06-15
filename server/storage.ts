@@ -79,11 +79,18 @@ export class MongoStorage implements IStorage {
       { returnDocument: 'after' }
     );
 
-    return result;
+    if (result && result._id) {
+      return { ...result, _id: result._id.toString() };
+    }
+    return null;
   }
 
   async getRegistrationByEmail(email: string): Promise<Registration | null> {
-    return await this.registrations.findOne({ email });
+    const result = await this.registrations.findOne({ email });
+    if (result && result._id) {
+      return { ...result, _id: result._id.toString() };
+    }
+    return null;
   }
 }
 
