@@ -1,0 +1,81 @@
+Goal:
+Convert the existing static project into a full Node.js web app with MongoDB integration, using the old design but replacing all page content with updated content provided in haps final content.txt.
+Use the existing HTML design from aviation-quiz (1).html as the template base.
+
+Do not change any styling, button layout, or theme — preserve the original look and feel.
+
+However, DO NOT use any of the old content.
+
+Instead, completely replace the content with the updated content from haps final content.txt across all 3 pages.
+
+This includes replacing all text, form fields, headings, labels, etc., exactly as specified.
+
+Do not modify or add new words — only use what is provided in haps final content.txt.
+
+🧠 Backend Functionality (Node.js + Express + MongoDB)
+Create a Node.js server using Express.
+
+Connect the backend to MongoDB Atlas with this URI in your .env file:
+
+
+MONGODB_URI=mongodb+srv://aviationhaps:vA2DRgOxesIZ8foK@haps.37enzmt.mongodb.net/?retryWrites=true&w=majority&appName=HAPS
+Use this database:
+
+
+Database Name: leads
+Schema for registrations:
+
+
+{
+  _id: "ObjectId",
+  fullName: "string",
+  phoneNumber: "string",
+  email: "string",
+  cityOfResidence: "string",
+  education: "string",
+  quizCompleted: "boolean",
+  registeredAt: "ISODate",
+  completedAt: "ISODate",
+  percentage: "number",
+  quizmark: "number"
+}
+🔒 Security Best Practices
+Use dotenv to manage secrets.
+
+Sanitize user inputs using express-validator or similar.
+
+Add basic security middleware:
+
+helmet
+
+cors with proper origin rules
+
+rate-limit if needed
+
+Avoid direct exposure of sensitive information.
+
+Implement server-side validation for all form inputs.
+
+🌐 Compatibility & Design
+Fully responsive layout for desktop and mobile.
+
+Add the logo LYFT logo-01.png to the top-left corner.
+
+Apply the color scheme from:
+WhatsApp Image 2025-06-10 at 19.57.19_7c84f8ce
+to match the branding.
+
+Do not change any words or context from the provided content.
+
+Summary of What To Do:
+✅ Use aviation-quiz (1).html layout
+✅ Replace all content with haps final content.txt (all 3 pages)
+✅ Keep theme, buttons, layout same
+✅ Add MongoDB backend with proper schema
+✅ Add logo
+✅ Use provided color scheme
+✅ Add security and validation
+✅ Make the site PC and mobile compatible
+❌ Do not change or add any new words
+❌ Do not use any old content
+make sure run and test if the full project is working make it efficient

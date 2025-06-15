@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPS Aviation Institute - CPL Scholarship Entrance Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #F7F7F7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 16px;
+            min-height: 100vh;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 32px;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .plane-icon {
+            font-size: 32px;
+            color: #1A4FD3;
+            margin-bottom: 8px;
+        }
+
+        @media (min-width: 640px) {
+            .plane-icon {
+                margin-bottom: 0;
+                margin-right: 12px;
+            }
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        @media (min-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header h1 {
+                font-size: 36px;
+            }
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        @media (min-width: 768px) {
+            .header p {
+                font-size: 18px;
+            }
+        }
+
+        .progress-container {
+            margin-bottom: 32px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #1A4FD3;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            margin-bottom: 24px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 32px;
+        }
+
+        .step-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .step-title {
+                font-size: 32px;
+            }
+        }
+
+        .step-description {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .step-description {
+                font-size: 18px;
+            }
+        }
+
+        .process-overview {
+            background-color: #f0f4ff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .process-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .step-number {
+            background-color: #1A4FD3;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 12px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .form-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            font-size: 16px;
+            background-color: white;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #1A4FD3;
+            box-shadow: 0 0 0 3px rgba(26, 79, 211, 0.1);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            min-height: 48px;
+        }
+
+        .btn-primary {
+            background-color: #5088dd;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: scale(1.02);
+        }
+
+        .btn-primary:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background-color: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4b5563;
+        }
+
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-success {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #15803d;
+        }
+
+        .btn-center {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding: 16px;
+            background-color: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .quiz-timer {
+            display: flex;
+            align-items: center;
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .quiz-progress {
+            text-align: center;
+            color: #666;
+        }
+
+        .section-badge {
+            background-color: #e0e7ff;
+            color: #3730a3;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .question-container {
+            margin-bottom: 24px;
+        }
+
+        .question-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: white;
+        }
+
+        .option:hover {
+            background-color: #f0f4ff;
+            border-color: #1A4FD3;
+        }
+
+        .option.selected {
+            background-color: #e0e7ff;
+            border-color: #1A4FD3;
+        }
+
+        .option-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            margin-right: 12px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-radio {
+            border-color: #1A4FD3;
+        }
+
+        .option.selected .option-radio::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #1A4FD3;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .option-text {
+            flex: 1;
+            font-size: 16px;
+        }
+
+        .option-letter {
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        @media (min-width: 640px) {
+            .navigation {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .nav-btn {
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .nav-btn {
+                width: auto;
+            }
+        }
+
+        .answered-count {
+            order: -1;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (min-width: 640px) {
+            .answered-count {
+                order: 0;
+            }
+        }
+
+        .contact-info {
+            background-color: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .contact-text {
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .contact-link {
+            color: #1A4FD3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .note {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px;
+            margin-top: 24px;
+            border-radius: 8px;
+        }
+
+        .note-text {
+            color: #92400e;
+            font-weight: 500;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #dbeafe;
+            border: 1px solid #93c5fd;
+            color: #1e40af;
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .toast-description {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 640px) {
+            .card {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 8px;
+            }
+            
+            .form-input, .form-select {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="plane-icon">✈️</div>
+                <h1>HAPS Aviation Institute</h1>
+            </div>
+            <p>CPL Scholarship Entrance Test</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-header">
+                <span class="progress-text">Progress</span>
+                <span class="progress-text" id="step-indicator">Step 1 of 4</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 25%"></div>
+            </div>
+        </div>
+
+        <!-- Step 1: Welcome -->
+        <div id="step-1" class="card">
+            <div class="step-icon" style="background-color: #dbeafe;">
+                🎓
+            </div>
+            <h2 class="step-title">
+                Welcome to the HAPS Aviation Institute CPL Scholarship Entrance Test!
+            </h2>
+            <p class="step-description">
+                This test is your first step to join our 4-day free trial and scholarship training program. 
+                It helps us understand your current knowledge and passion for aviation, while also qualifying 
+                you for the scholarship opportunity.
+            </p>
+
+            <div class="process-overview">
+                <h3 class="process-title">
+                    📋 Process Overview:
+                </h3>
+                <div class="process-step">
+                    <span class="step-number">1</span>
+                    <p>Complete this online Entrance & Eligibility Test (30 questions, 30 mins). This is a mix of aviation basics, situational questions, and motivation.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">2</span>
+                    <p>Once you pass, you will be invited to a 4-day free trial and scholarship training class, where you will get hands-on exposure to pilot training essentials, study materials, and mentorship.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">3</span>
+                    <p>After completing the trial class, you will appear for a final scholarship exam to compete for available scholarship seats.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">4</span>
+                    <p>Successful candidates will be offered admission into the HAPS Aviation Institute CPL program with scholarship benefits.</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #666; margin-bottom: 32px;">
+                This process helps us identify motivated and capable candidates who are genuinely interested in a flying career. 
+                It also allows you to experience the training before committing.
+            </p>
+
+            <button class="btn btn-primary btn-center" onclick="nextStep()">
+                🚀 Start my pilot journey
+            </button>
+
+            <div class="contact-info">
+                <p class="contact-text">In case of any doubts you can contact us at</p>
+                <p>
+                    <a href="tel:+919945244270" class="contact-link">+91 99452 44270</a> / 
+                    <a href="mailto:marketing@hapsaviation.com" class="contact-link">marketing@hapsaviation.com</a>
+                </p>
+            </div>
+
+            <div class="note">
+                <p class="note-text">
+                    <strong>Note:</strong> You are open to browse and answer, the goal is to understand your effort.
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 2: Personal Details Form -->
+        <div id="step-2" class="card hidden">
+            <div class="step-icon" style="background-color: #dcfce7;">
+                👤
+            </div>
+            <h2 class="step-title">Personal Details</h2>
+            <p class="step-description">Please fill out all the required information to proceed to the test.</p>
+
+            <form id="personal-form">
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">
+                            Full Name <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            class="form-input"
+                            placeholder="Enter your full name"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">
+                            Phone Number <span class="required">*</span>
+                        </label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="form-input"
+                            placeholder="+91 XXXXX XXXXX"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            Email Address <span class="required">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="form-input"
+                            placeholder="your.email@example.com"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="parentName" class="form-label">
+                            Father/Mother's Name <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="parentName"
+                            name="parentName"
+                            class="form-input"
+                            placeholder="Enter parent's name"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="parentOccupation" class="form-label">
+                            Father/Mother's Occupation <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="parentOccupation"
+                            name="parentOccupation"
+                            class="form-input"
+                            placeholder="Enter parent's occupation"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="education" class="form-label">
+                            Education Qualification <span class="required">*</span>
+                        </label>
+                        <select id="education" name="education" class="form-select" required>
+                            <option value="">Select your qualification</option>
+                            <option value="10th">10th</option>
+                            <option value="diploma">Diploma</option>
+                            <option value="10+2">10+2</option>
+                            <option value="bachelors">Bachelor's Degree</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 32px;">
+                    <button type="submit" class="btn btn-primary">
+                        ➡️ Submit & Proceed to Test
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 3: Quiz -->
+        <div id="step-3" class="card hidden">
+            <div class="quiz-header">
+                <div class="quiz-timer">
+                    ⏰ Time Remaining: <span id="timer">30:00</span>
+                </div>
+                <div class="quiz-progress">
+                    Question <span id="current-question">1</span> of <span id="total-questions">30</span>
+                </div>
+            </div>
+
+            <div id="section-badge" class="section-badge">CPL & Aviation Basics</div>
+
+            <div class="question-container">
+                <h3 class="question-title" id="question-text">
+                    1. What is the full form of CPL in aviation?
+                </h3>
+                <div class="options-container" id="options-container">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button id="prev-btn" class="btn btn-secondary nav-btn" onclick="previousQuestion()" disabled>
+                    ⬅️ Previous
+                </button>
+                
+                <div class="answered-count">
+                    <span id="answered-count">0</span> of 30 answered
+                </div>
+
+                <button id="next-btn" class="btn btn-primary nav-btn" onclick="nextQuestion()">
+                    Next ➡️
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 4: Thank You -->
+        <div id="step-4" class="card hidden">
+            <div class="step-icon" style="background-color: #dcfce7;">
+                ✅
+            </div>
+            <h2 class="step-title">Thank You!</h2>
+            <p class="step-description">
+                Thank you for taking the test. If you have passed the test, you will receive a call from 
+                <strong>LYFT by HAPS Aviation</strong> within the next few days.
+            </p>
+            <div style="background-color: #f0f4ff; border-radius: 12px; padding: 24px; margin-top: 24px;">
+                <p style="color: #1A4FD3; font-weight: 500; text-align: center;">
+                    ❓ Our team will evaluate your responses and contact qualified candidates for the 4-day free trial program.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast">
+        <div class="toast-title" id="toast-title"></div>
+        <div class="toast-description" id="toast-description"></div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quizQuestions = [
+            // CPL & Aviation Basics (20 Questions)
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is the full form of CPL in aviation?",
+                options: ["Commercial Pilot License", "Civil Pilot License", "Certified Private License", "Commercial Passenger Line"],
+                correct: 0
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is the minimum age to apply for a CPL in India?",
+                options: ["17", "18", "21", "25"],
+                correct: 1
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "How many total flying hours are required to be eligible for CPL in India?",
+                options: ["100 hours", "150 hours", "200 hours", "250 hours"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What are the mandatory subjects you must pass for a CPL?",
+                options: ["Geography, Chemistry", "Physics, Maths", "Air Regulation, Navigation, Meteorology", "Biology, History"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "DGCA stands for:",
+                options: ["Directorate General of Civil Aviation", "Delhi General Cargo Authority", "Department of Global Civil Aircraft", "Directorate of Government Charter Aircraft"],
+                correct: 0
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is a logbook used for in aviation?",
+                options: ["To log aircraft speed", "To track passenger data", "To record flight hours and experience", "To save emergency contacts"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "Which document allows you to fly solo as a student pilot?",
+                options: ["DGCA Letter", "Student Pilot License", "CPL", "Ground School Certificate"],
+                correct: 1
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is the purpose of a checkride?",
+                options: ["To go on vacation", "To test an aircraft", "To evaluate a pilot's skill for licensing", "To collect weather data"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is the role of a Flight Instructor?",
+                options: ["Ground duty officer", "Engine mechanic", "To train and supervise student pilots", "To approve airport designs"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is \"controlled airspace\"?",
+                options: ["An airspace with free movement", "Where ATC clearance is needed", "Military-only zone", "A temporary air corridor"],
+                correct: 1
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What does a \"crosswind\" mean during takeoff or landing?",
+                options: ["Wind from directly behind", "Wind from the side", "Wind from above", "No wind"],
+                correct: 1
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is a NOTAM?",
+                options: ["Flight time log", "Weather forecast", "Notice to Airmen about hazards or changes", "Passenger safety manual"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "How many types of licenses exist in Indian aviation for pilots?",
+                options: ["1", "2", "3 (SPL, PPL, CPL)", "Unlimited"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is the visibility requirement to fly under VFR?",
+                options: ["1 km", "3 km", "5 km", "8 km"],
+                correct: 1
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is the basic fuel requirement for VFR day flight?",
+                options: ["Enough for 15 mins", "Enough for 30 mins", "Enough for 45 mins after planned flight", "No requirement"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "Who controls Indian aviation licensing?",
+                options: ["ICAO", "DGCA", "IATA", "Air India"],
+                correct: 1
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What is the first step to becoming a commercial pilot?",
+                options: ["Buy a uniform", "Get a medical certificate", "Apply to airlines", "Join cabin crew"],
+                correct: 1
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "Which instrument helps maintain level flight?",
+                options: ["Speedometer", "Altimeter", "Attitude Indicator", "Compass"],
+                correct: 2
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "What does a red light from the control tower mean on ground?",
+                options: ["Stop", "Clear to taxi", "Emergency", "Takeoff immediately"],
+                correct: 0
+            },
+            {
+                section: "CPL & Aviation Basics",
+                question: "How do you handle long-term goals?",
+                options: ["Lose motivation quickly", "Stay self-driven", "Need reminders", "Avoid setting goals"],
+                correct: 1
+            },
+            // Behavior & Situational Awareness (5 Questions)
+            {
+                section: "Behavior & Situational Awareness",
+                question: "What does \"discipline\" mean to you in aviation?",
+                options: ["Following rules only when watched", "Following rules at all times for safety", "Doing what you want", "Arriving late but working hard"],
+                correct: 1
+            },
+            {
+                section: "Behavior & Situational Awareness",
+                question: "How do you stay calm in a high-pressure situation?",
+                options: ["Panic", "Take deep breaths and focus on the task", "Ignore the situation", "Yell at others"],
+                correct: 1
+            },
+            {
+                section: "Behavior & Situational Awareness",
+                question: "What is your approach to learning something new?",
+                options: ["I jump in and learn by doing", "I research, plan, and set goals first", "I wait for step-by-step guidance", "I delay until I feel confident"],
+                correct: 1
+            },
+            {
+                section: "Behavior & Situational Awareness",
+                question: "You are assigned a team project. You prefer:",
+                options: ["Doing all the work yourself", "Collaborating and sharing ideas", "Letting others do the work", "Avoiding the project"],
+                correct: 1
+            },
+            {
+                section: "Behavior & Situational Awareness",
+                question: "Which quality do you think is most important for a pilot?",
+                options: ["Discipline", "Responsibility", "Situational Awareness", "All of the above"],
+                correct: 3
+            },
+            // Motivation & Goal Alignment (5 Questions)
+            {
+                section: "Motivation & Goal Alignment",
+                question: "Why do you want to become a pilot?",
+                options: ["For prestige", "Because my family forced me", "Passion for flying and career in aviation", "To avoid other jobs"],
+                correct: 2
+            },
+            {
+                section: "Motivation & Goal Alignment",
+                question: "How do you see yourself in 5 years?",
+                options: ["Flying commercially and growing in career", "Exploring different career options", "Still deciding what I want to do", "Working in any stable job"],
+                correct: 0
+            },
+            {
+                section: "Motivation & Goal Alignment",
+                question: "What motivates you to pursue aviation?",
+                options: ["Salary", "Love for flying and responsibility", "Peer pressure", "Random choice"],
+                correct: 1
+            },
+            {
+                section: "Motivation & Goal Alignment",
+                question: "What are you willing to sacrifice to become a pilot?",
+                options: ["Time and comfort", "Nothing", "Only money", "Fun and friends"],
+                correct: 0
+            },
+            {
+                section: "Motivation & Goal Alignment",
+                question: "What is your attitude towards long hours of study and training?",
+                options: ["I accept it as part of the journey", "I dislike it", "I avoid it", "I complain"],
+                correct: 0
+            }
+        ];
+
+        // Application state
+        let currentStep = 1;
+        let currentQuestion = 0;
+        let userAnswers = {};
+        let candidateData = {};
+        let timeRemaining = 30 * 60; // 30 minutes in seconds
+        let timerInterval = null;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            showStep(1);
+            setupFormSubmission();
+        });
+
+        function showStep(step) {
+            // Hide all steps
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step-${i}`).classList.add('hidden');
+            }
+            
+            // Show current step
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+            
+            // Update progress
+            updateProgress(step);
+        }
+
+        function updateProgress(step) {
+            const progressFill = document.getElementById('progress-fill');
+            const stepIndicator = document.getElementById('step-indicator');
+            
+            progressFill.style.width = `${(step / 4) * 100}%`;
+            stepIndicator.textContent = `Step ${step} of 4`;
+        }
+
+        function nextStep() {
+            if (currentStep < 4) {
+                currentStep++;
+                showStep(currentStep);
+                
+                if (currentStep === 3) {
+                    initializeQuiz();
+                }
+            }
+        }
+
+        function setupFormSubmission() {
+            const form = document.getElementById('personal-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Collect form data
+                const formData = new FormData(form);
+                candidateData = {
+                    fullName: formData.get('fullName'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email'),
+                    parentName: formData.get('parentName'),
+                    parentOccupation: formData.get('parentOccupation'),
+                    education: formData.get('education')
+                };
+                
+                // Send email notification (simulate)
+                sendEmailNotification(candidateData);
+                
+                // Show success toast
+                showToast('Details submitted successfully!', 'You can now proceed to the test.');
+                
+                // Proceed to quiz
+                setTimeout(() => {
+                    nextStep();
+                }, 1500);
+            });
+        }
+
+        function sendEmailNotification(data) {
+            // Send data to Wix database for automation triggers
+            if (window.wixData && window.wixData.insert) {
+                // Use Wix Data API to insert into a collection
+                window.wixData.insert("CandidateRegistrations", {
+                    fullName: data.fullName,
+                    phone: data.phone,
+                    email: data.email,
+                    parentName: data.parentName,
+                    parentOccupation: data.parentOccupation,
+                    education: data.education,
+                    registrationTime: new Date(),
+                    status: "New"
+                }).then(() => {
+                    console.log('Data saved to Wix database - automation will trigger email');
+                }).catch((error) => {
+                    console.error('Error saving to database:', error);
+                });
+            } else {
+                // Fallback: Create a custom event that Wix can listen to
+                const customEvent = new CustomEvent('candidateRegistration', {
+                    detail: {
+                        fullName: data.fullName,
+                        phone: data.phone,
+                        email: data.email,
+                        parentName: data.parentName,
+                        parentOccupation: data.parentOccupation,
+                        education: data.education,
+                        registrationTime: new Date().toISOString()
+                    }
+                });
+                window.dispatchEvent(customEvent);
+                console.log('Custom event dispatched for Wix automation:', data);
+            }
+        }
+
+        function initializeQuiz() {
+            currentQuestion = 0;
+            userAnswers = {};
+            startTimer();
+            displayQuestion();
+            updateQuizProgress();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                
+                if (timeRemaining <= 0) {
+                    submitQuiz(false); // Auto-submit when time expires
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Change color when time is running low
+            if (timeRemaining <= 300) { // 5 minutes
+                timerElement.style.color = '#dc2626';
+            }
+        }
+
+        function displayQuestion() {
+            const question = quizQuestions[currentQuestion];
+            
+            // Update section badge if it's a new section
+            if (currentQuestion === 0 || quizQuestions[currentQuestion].section !== quizQuestions[currentQuestion - 1].section) {
+                document.getElementById('section-badge').textContent = question.section;
+            }
+            
+            // Update question text
+            document.getElementById('question-text').textContent = `${currentQuestion + 1}. ${question.question}`;
+            
+            // Create options
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.onclick = () => selectAnswer(index);
+                
+                // Check if this option is already selected
+                if (userAnswers[currentQuestion] === index) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.innerHTML = `
+                    <div class="option-radio"></div>
+                    <div class="option-text">
+                        <span class="option-letter">${String.fromCharCode(65 + index)})</span>
+                        <span>${option}</span>
+                    </div>
+                `;
+                
+                optionsContainer.appendChild(optionElement);
+            });
+        }
+
+        function selectAnswer(answerIndex) {
+            userAnswers[currentQuestion] = answerIndex;
+            
+            // Update option display
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                option.classList.toggle('selected', index === answerIndex);
+            });
+            
+            updateAnsweredCount();
+        }
+
+        function updateQuizProgress() {
+            document.getElementById('current-question').textContent = currentQuestion + 1;
+            document.getElementById('total-questions').textContent = quizQuestions.length;
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === quizQuestions.length - 1) {
+                nextBtn.textContent = '✅ Submit Test';
+                nextBtn.className = 'btn btn-success nav-btn';
+                nextBtn.onclick = () => submitQuiz(true);
+            } else {
+                nextBtn.textContent = 'Next ➡️';
+                nextBtn.className = 'btn btn-primary nav-btn';
+                nextBtn.onclick = nextQuestion;
+            }
+        }
+
+        function updateAnsweredCount() {
+            const answeredCount = Object.keys(userAnswers).length;
+            document.getElementById('answered-count').textContent = answeredCount;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+                updateQuizProgress();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+                updateQuizProgress();
+            }
+        }
+
+        function submitQuiz(isCompleted) {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            
+            const timeCompleted = (30 * 60) - timeRemaining;
+            const submissionData = {
+                candidateData: candidateData,
+                answers: userAnswers,
+                timeCompleted: timeCompleted,
+                isCompleted: isCompleted,
+                submittedAt: new Date().toISOString()
+            };
+            
+            // Send quiz data to Wix database for automation triggers
+            if (window.wixData && window.wixData.insert) {
+                window.wixData.insert("QuizSubmissions", submissionData).then(() => {
+                    console.log('Quiz data saved to Wix database - automation will trigger');
+                }).catch((error) => {
+                    console.error('Error saving quiz data:', error);
+                });
+            } else {
+                // Fallback: Create a custom event for quiz completion
+                const customEvent = new CustomEvent('quizSubmitted', {
+                    detail: submissionData
+                });
+                window.dispatchEvent(customEvent);
+                console.log('Quiz submission event dispatched for Wix automation');
+            }
+            
+            // Show success toast
+            showToast('Test submitted successfully!', 'Thank you for taking the test.');
+            
+            // Proceed to thank you step
+            setTimeout(() => {
+                currentStep = 4;
+                showStep(4);
+            }, 1500);
+        }
+
+        function showToast(title, description) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-description').textContent = description;
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
