@@ -1,7 +1,9 @@
 import { z } from "zod";
+import { ObjectId } from "mongodb";
 
 // MongoDB Schema for leads collection
 export const registrationSchema = z.object({
+  _id: z.instanceof(ObjectId).optional(),
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   phoneNumber: z.string().min(10, "Phone number must be at least 10 digits"),
   email: z.string().email("Please enter a valid email address"),
@@ -9,6 +11,7 @@ export const registrationSchema = z.object({
   education: z.enum(["10th", "12th", "diploma", "graduation", "postgraduation", "other"], {
     required_error: "Please select your educational qualification"
   }),
+  certification: z.boolean().default(false),
   quizCompleted: z.boolean().default(false),
   registeredAt: z.date().default(() => new Date()),
   completedAt: z.date().optional(),
@@ -27,6 +30,7 @@ export type QuizSubmission = z.infer<typeof quizSubmissionSchema>;
 
 // Insert schemas for API validation
 export const insertRegistrationSchema = registrationSchema.omit({
+  _id: true,
   quizCompleted: true,
   registeredAt: true,
   completedAt: true,
